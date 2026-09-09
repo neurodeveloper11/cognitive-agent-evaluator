@@ -1,6 +1,6 @@
 """
 Interactive UI Dashboard for Cognitive Agent Evaluator.
-100% self-contained CSS styling (Brave Shields & offline resilient, no external CDN dependencies).
+100% self-contained CSS styling with a modern light "blanco grisáceo" theme (Stripe/Notion style).
 """
 
 HTML_DASHBOARD = """<!DOCTYPE html>
@@ -13,27 +13,28 @@ HTML_DASHBOARD = """<!DOCTYPE html>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: #090d16;
-      color: #e2e8f0;
+      background-color: #f1f5f9; /* Blanco grisáceo moderno */
+      color: #0f172a;
       line-height: 1.5;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
     
-    /* Layout */
+    /* Layout Navbar */
     .navbar {
-      background: rgba(9, 13, 22, 0.85);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid #e2e8f0;
       position: sticky;
       top: 0;
       z-index: 50;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
     }
     .nav-container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 14px 20px;
+      padding: 12px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -46,18 +47,18 @@ HTML_DASHBOARD = """<!DOCTYPE html>
     .brand-icon {
       width: 38px;
       height: 38px;
-      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      background: linear-gradient(135deg, #0284c7, #2563eb);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 20px;
-      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
     }
     .brand-title {
       font-size: 17px;
       font-weight: 800;
-      color: #ffffff;
+      color: #0f172a;
       letter-spacing: -0.02em;
       display: flex;
       align-items: center;
@@ -66,18 +67,18 @@ HTML_DASHBOARD = """<!DOCTYPE html>
     .badge-live {
       font-size: 11px;
       font-weight: 700;
-      background: rgba(6, 182, 212, 0.15);
-      color: #38bdf8;
+      background: #e0f2fe;
+      color: #0284c7;
       padding: 2px 8px;
       border-radius: 9999px;
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      border: 1px solid #bae6fd;
     }
     .brand-sub {
       font-size: 12px;
-      color: #94a3b8;
+      color: #64748b;
     }
     .brand-sub a {
-      color: #38bdf8;
+      color: #0284c7;
       text-decoration: none;
       font-weight: 600;
     }
@@ -91,28 +92,28 @@ HTML_DASHBOARD = """<!DOCTYPE html>
       font-weight: 600;
       padding: 7px 14px;
       border-radius: 8px;
-      background: #1e293b;
-      color: #cbd5e1;
+      background: #ffffff;
+      color: #334155;
       text-decoration: none;
-      border: 1px solid #334155;
+      border: 1px solid #cbd5e1;
       transition: all 0.2s;
     }
-    .btn-swagger:hover { background: #334155; color: #fff; }
+    .btn-swagger:hover { background: #f8fafc; color: #0f172a; border-color: #94a3b8; }
     .btn-github {
       font-size: 12px;
       font-weight: 600;
       padding: 7px 14px;
       border-radius: 8px;
-      background: #0284c7;
+      background: #0f172a;
       color: #ffffff;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       transition: all 0.2s;
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
     }
-    .btn-github:hover { background: #0369a1; }
+    .btn-github:hover { background: #1e293b; }
     .btn-github svg {
       width: 16px !important;
       height: 16px !important;
@@ -132,26 +133,27 @@ HTML_DASHBOARD = """<!DOCTYPE html>
 
     /* Purpose Section */
     .purpose-box {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 16px;
       padding: 24px;
       margin-bottom: 28px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
     }
     .purpose-header {
       text-align: center;
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 auto 20px;
     }
     .purpose-header h2 {
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 800;
-      color: #ffffff;
+      color: #0f172a;
       letter-spacing: -0.02em;
     }
     .purpose-header p {
-      font-size: 14px;
-      color: #94a3b8;
+      font-size: 13.5px;
+      color: #475569;
       margin-top: 6px;
     }
     .purpose-grid {
@@ -165,21 +167,21 @@ HTML_DASHBOARD = """<!DOCTYPE html>
       font-size: 13px;
     }
     .purpose-card-1 {
-      background: rgba(225, 29, 72, 0.06);
-      border: 1px solid rgba(225, 29, 72, 0.2);
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
     }
-    .purpose-card-1 h3 { color: #f43f5e; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .purpose-card-1 h3 { color: #e11d48; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
     .purpose-card-2 {
-      background: rgba(6, 182, 212, 0.06);
-      border: 1px solid rgba(6, 182, 212, 0.2);
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
     }
-    .purpose-card-2 h3 { color: #38bdf8; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .purpose-card-2 h3 { color: #0284c7; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
     .purpose-card-3 {
-      background: rgba(16, 185, 129, 0.06);
-      border: 1px solid rgba(16, 185, 129, 0.2);
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
     }
-    .purpose-card-3 h3 { color: #34d399; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-    .purpose-card p { color: #cbd5e1; line-height: 1.45; }
+    .purpose-card-3 h3 { color: #16a34a; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .purpose-card p { color: #334155; line-height: 1.45; }
 
     /* Playground Grid */
     .playground-grid {
@@ -192,15 +194,16 @@ HTML_DASHBOARD = """<!DOCTYPE html>
     }
 
     .panel {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 16px;
       padding: 22px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
     }
     .panel-title {
       font-size: 16px;
       font-weight: 800;
-      color: #fff;
+      color: #0f172a;
       margin-bottom: 16px;
       display: flex;
       align-items: center;
@@ -211,7 +214,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
     .samples-label {
       font-size: 11px;
       font-weight: 700;
-      color: #94a3b8;
+      color: #64748b;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 8px;
@@ -233,37 +236,37 @@ HTML_DASHBOARD = """<!DOCTYPE html>
       line-height: 1.35;
     }
     .btn-sample-1 {
-      background: rgba(244, 63, 94, 0.1);
-      border: 1px solid rgba(244, 63, 94, 0.25);
-      color: #fecdd3;
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      color: #9f1239;
     }
-    .btn-sample-1:hover { background: rgba(244, 63, 94, 0.2); }
+    .btn-sample-1:hover { background: #ffe4e6; border-color: #fda4af; }
     .btn-sample-2 {
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.25);
-      color: #fde68a;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #92400e;
     }
-    .btn-sample-2:hover { background: rgba(245, 158, 11, 0.2); }
+    .btn-sample-2:hover { background: #fef3c7; border-color: #fcd34d; }
     .btn-sample-3 {
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.25);
-      color: #bfdbfe;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
     }
-    .btn-sample-3:hover { background: rgba(59, 130, 246, 0.2); }
+    .btn-sample-3:hover { background: #dbeafe; border-color: #93c5fd; }
     .btn-sample-4 {
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      color: #a7f3d0;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
     }
-    .btn-sample-4:hover { background: rgba(16, 185, 129, 0.2); }
+    .btn-sample-4:hover { background: #dcfce7; border-color: #86efac; }
     .btn-sample b { display: block; font-size: 12px; margin-bottom: 2px; }
-    .btn-sample span { font-size: 11px; opacity: 0.85; }
+    .btn-sample span { font-size: 11px; opacity: 0.9; }
 
     /* Textarea & Controls */
     .textarea-label {
       font-size: 11px;
       font-weight: 700;
-      color: #94a3b8;
+      color: #64748b;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 6px;
@@ -272,17 +275,21 @@ HTML_DASHBOARD = """<!DOCTYPE html>
     .text-input {
       width: 100%;
       height: 120px;
-      background: #020617;
-      border: 1px solid #334155;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
       border-radius: 12px;
       padding: 12px;
-      color: #f8fafc;
+      color: #0f172a;
       font-size: 13.5px;
       resize: vertical;
       outline: none;
-      transition: border 0.2s;
+      transition: all 0.2s;
     }
-    .text-input:focus { border-color: #0284c7; box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.25); }
+    .text-input:focus {
+      background: #ffffff;
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
 
     .author-selector {
       display: flex;
@@ -290,7 +297,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
       justify-content: space-between;
       margin: 12px 0 16px;
       font-size: 12px;
-      color: #94a3b8;
+      color: #64748b;
     }
     .author-options {
       display: flex;
@@ -301,34 +308,35 @@ HTML_DASHBOARD = """<!DOCTYPE html>
       align-items: center;
       gap: 6px;
       cursor: pointer;
-      color: #e2e8f0;
+      color: #334155;
+      font-weight: 500;
     }
 
     .btn-run {
       width: 100%;
-      padding: 14px;
+      padding: 13px;
       border-radius: 12px;
       border: none;
-      background: linear-gradient(135deg, #06b6d4, #2563eb);
+      background: linear-gradient(135deg, #0284c7, #2563eb);
       color: #fff;
       font-weight: 800;
       font-size: 14px;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
       transition: all 0.2s;
     }
-    .btn-run:hover { opacity: 0.95; transform: translateY(-1px); }
+    .btn-run:hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35); }
     .btn-run:active { transform: translateY(0); }
 
     /* Results States */
     .empty-state {
       text-align: center;
       padding: 50px 20px;
-      color: #94a3b8;
+      color: #64748b;
     }
     .empty-icon { font-size: 40px; margin-bottom: 12px; }
-    .empty-state h4 { font-size: 16px; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; }
-    .empty-state p { font-size: 13px; max-width: 320px; margin: 0 auto; }
+    .empty-state h4 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .empty-state p { font-size: 13px; max-width: 320px; margin: 0 auto; color: #64748b; }
 
     .loading-state {
       text-align: center;
@@ -338,8 +346,8 @@ HTML_DASHBOARD = """<!DOCTYPE html>
     .spinner {
       width: 42px;
       height: 42px;
-      border: 4px solid rgba(6, 182, 212, 0.15);
-      border-top-color: #06b6d4;
+      border: 4px solid rgba(2, 132, 199, 0.15);
+      border-top-color: #0284c7;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
       margin: 0 auto 16px;
@@ -353,7 +361,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
       align-items: center;
       justify-content: space-between;
       padding-bottom: 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid #e2e8f0;
       margin-bottom: 16px;
     }
     .risk-badge {
@@ -364,21 +372,21 @@ HTML_DASHBOARD = """<!DOCTYPE html>
       padding: 5px 14px;
       border-radius: 9999px;
     }
-    .risk-nominal { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
-    .risk-moderate { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
-    .risk-critical { background: rgba(244, 63, 94, 0.15); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .risk-nominal { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .risk-moderate { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .risk-critical { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
 
     .latency-badge {
       font-size: 12px;
       font-family: monospace;
-      color: #38bdf8;
+      color: #0284c7;
       font-weight: 700;
     }
 
     .metrics-title {
       font-size: 11px;
       font-weight: 700;
-      color: #94a3b8;
+      color: #64748b;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 10px;
@@ -390,15 +398,15 @@ HTML_DASHBOARD = """<!DOCTYPE html>
       margin-bottom: 18px;
     }
     .metric-card {
-      background: #020617;
-      border: 1px solid #1e293b;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
       border-radius: 12px;
       padding: 12px;
       text-align: center;
     }
-    .metric-name { font-size: 11px; color: #94a3b8; font-weight: 600; }
-    .metric-value { font-size: 18px; font-weight: 800; color: #ffffff; margin: 2px 0; }
-    .metric-sub { font-size: 10.5px; color: #64748b; }
+    .metric-name { font-size: 11px; color: #64748b; font-weight: 600; }
+    .metric-value { font-size: 18px; font-weight: 800; color: #0f172a; margin: 2px 0; }
+    .metric-sub { font-size: 10.5px; color: #475569; }
 
     .biases-section { margin-bottom: 18px; }
     .bias-item {
@@ -408,12 +416,12 @@ HTML_DASHBOARD = """<!DOCTYPE html>
       font-size: 12.5px;
     }
     .bias-item-high {
-      background: rgba(244, 63, 94, 0.08);
-      border: 1px solid rgba(244, 63, 94, 0.25);
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
     }
     .bias-item-medium {
-      background: rgba(245, 158, 11, 0.08);
-      border: 1px solid rgba(245, 158, 11, 0.25);
+      background: #fffbeb;
+      border: 1px solid #fde68a;
     }
     .bias-item-header {
       display: flex;
@@ -422,7 +430,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
       font-weight: 800;
       margin-bottom: 4px;
     }
-    .bias-name { color: #ffffff; font-size: 13.5px; }
+    .bias-name { color: #0f172a; font-size: 13.5px; }
     .bias-pill {
       font-size: 10px;
       padding: 2px 8px;
@@ -430,13 +438,13 @@ HTML_DASHBOARD = """<!DOCTYPE html>
       font-weight: 800;
       text-transform: uppercase;
     }
-    .pill-high { background: rgba(244, 63, 94, 0.2); color: #fb7185; }
-    .pill-medium { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-    .bias-desc { color: #cbd5e1; font-size: 11.5px; line-height: 1.4; margin-bottom: 6px; }
-    .bias-triggers { font-size: 11px; color: #94a3b8; }
+    .pill-high { background: #fee2e2; color: #991b1b; }
+    .pill-medium { background: #fef3c7; color: #92400e; }
+    .bias-desc { color: #334155; font-size: 11.5px; line-height: 1.4; margin-bottom: 6px; }
+    .bias-triggers { font-size: 11px; color: #64748b; }
     .trigger-tag {
-      background: #1e293b;
-      color: #38bdf8;
+      background: #e2e8f0;
+      color: #0369a1;
       padding: 2px 6px;
       border-radius: 4px;
       font-family: monospace;
@@ -445,15 +453,15 @@ HTML_DASHBOARD = """<!DOCTYPE html>
     }
 
     .mitigation-box {
-      background: rgba(79, 70, 229, 0.1);
-      border: 1px solid rgba(79, 70, 229, 0.3);
+      background: #f5f3ff;
+      border: 1px solid #ddd6fe;
       border-radius: 12px;
       padding: 16px;
     }
     .mitigation-box h4 {
       font-size: 12px;
       font-weight: 800;
-      color: #a5b4fc;
+      color: #6d28d9;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       margin-bottom: 8px;
@@ -464,28 +472,29 @@ HTML_DASHBOARD = """<!DOCTYPE html>
     .mitigation-box ul {
       padding-left: 18px;
       font-size: 12px;
-      color: #e0e7ff;
+      color: #312e81;
       line-height: 1.5;
     }
     .counterfactual-text {
       margin-top: 10px;
       padding-top: 10px;
-      border-top: 1px solid rgba(79, 70, 229, 0.2);
+      border-top: 1px solid #ddd6fe;
       font-size: 11.5px;
-      color: #c7d2fe;
+      color: #4338ca;
       font-style: italic;
     }
 
     /* Footer */
     .footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      background: #020617;
+      border-top: 1px solid #e2e8f0;
+      background: #ffffff;
       padding: 20px;
       font-size: 12px;
       color: #64748b;
       text-align: center;
     }
-    .footer a { color: #38bdf8; text-decoration: none; margin: 0 8px; }
+    .footer a { color: #0284c7; text-decoration: none; margin: 0 8px; font-weight: 500; }
+    .footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -591,7 +600,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
 
         <div id="loadingState" class="loading-state">
           <div class="spinner"></div>
-          <p style="color: #38bdf8; font-weight: 700;">Analizando heurísticas y psicometría...</p>
+          <p style="color: #0284c7; font-weight: 700;">Analizando heurísticas y psicometría...</p>
         </div>
 
         <div id="resultContent" class="result-content">
@@ -609,12 +618,12 @@ HTML_DASHBOARD = """<!DOCTYPE html>
             </div>
             <div class="metric-card">
               <div class="metric-name">Valencia Emocional</div>
-              <div id="valValence" class="metric-value" style="color: #38bdf8;">0.0</div>
+              <div id="valValence" class="metric-value" style="color: #0284c7;">0.0</div>
               <div id="descValence" class="metric-sub">Neutro</div>
             </div>
             <div class="metric-card">
               <div class="metric-name">Coherencia Lógica</div>
-              <div id="valConsistency" class="metric-value" style="color: #34d399;">0%</div>
+              <div id="valConsistency" class="metric-value" style="color: #16a34a;">0%</div>
               <div id="descConsistency" class="metric-sub">Alta</div>
             </div>
           </div>
@@ -723,7 +732,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
 
       if (!data.biases_detected || data.biases_detected.length === 0) {
         biasesList.innerHTML = `
-          <div style="padding: 12px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); color: #34d399; font-size: 12px;">
+          <div style="padding: 12px; border-radius: 10px; background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; font-size: 12px;">
             🎉 <b>No se detectaron sesgos evidentes.</b> El argumento se mantiene objetivo y basado en datos.
           </div>
         `;

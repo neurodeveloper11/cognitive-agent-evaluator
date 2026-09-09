@@ -1,30 +1,47 @@
 """
 Psychometric Modeling & Behavioral Telemetry Calculations.
-Applies cognitive science formulas to quantify textual reasoning dynamics.
+Applies cognitive science formulas to quantify textual reasoning dynamics (Bilingual EN/ES).
 """
 
 import re
-from typing import Dict
 from src.schemas import PsychometricMetrics
 
 POSITIVE_LEXICON = {
+    # English
     "effective", "optimal", "rigorous", "evidence", "proven", "benefit",
-    "solution", "validated", "constructive", "systematic", "accurate", "resilient"
+    "solution", "validated", "constructive", "systematic", "accurate", "resilient",
+    # Spanish
+    "efectivo", "optimo", "óptimo", "riguroso", "evidencia", "probado", "beneficio",
+    "solucion", "solución", "validado", "constructivo", "sistematico", "sistemático",
+    "preciso", "resiliente", "valioso", "seguro", "consistente", "exitoso"
 }
 
 NEGATIVE_LEXICON = {
+    # English
     "catastrophic", "failure", "hopeless", "impossible", "ruined", "disaster",
-    "terrible", "toxic", "regret", "fault", "useless", "panic"
+    "terrible", "toxic", "regret", "fault", "useless", "panic",
+    # Spanish
+    "catastrofico", "catastrófico", "fracaso", "imposible", "arruinado", "desastre",
+    "terrible", "toxico", "tóxico", "arrepentimiento", "culpa", "inutil", "inútil", "panico", "pánico",
+    "peligro", "perdida", "pérdida", "arruinar"
 }
 
 HEDGING_TOKENS = {
+    # English
     "maybe", "perhaps", "possibly", "probably", "might", "could", "somewhat",
-    "unclear", "guess", "suppose", "fairly", "seemingly"
+    "unclear", "guess", "suppose", "fairly", "seemingly",
+    # Spanish
+    "talvez", "quizas", "quizás", "posiblemente", "probablemente", "podria", "podría",
+    "supongo", "creo", "aparentemente", "dudoso", "inseguro"
 }
 
 LOGICAL_CONNECTIVES = {
+    # English
     "therefore", "consequently", "because", "furthermore", "thus", "however",
-    "nevertheless", "accordingly", "specifically", "in contrast"
+    "nevertheless", "accordingly", "specifically", "in contrast",
+    # Spanish
+    "por tanto", "por lo tanto", "en consecuencia", "porque", "ademas", "además",
+    "sin embargo", "no obstante", "por consiguiente", "especificamente", "en contraste", "dado que"
 }
 
 
@@ -38,12 +55,10 @@ def calculate_psychometrics(text: str) -> PsychometricMetrics:
     total_sentences = max(len(sentences), 1)
 
     # 1. Cognitive Load Index (0 - 100)
-    # Estimated through sentence length, complex word ratio (>6 chars), and density
     avg_sentence_len = total_words / total_sentences
     long_words = [w for w in words if len(w) > 6]
     complex_word_ratio = len(long_words) / total_words
 
-    # Formula: normalized composite score
     raw_load = (avg_sentence_len * 2.0) + (complex_word_ratio * 70.0)
     cognitive_load_index = round(min(max(raw_load, 5.0), 100.0), 2)
 

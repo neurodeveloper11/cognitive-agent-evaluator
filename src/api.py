@@ -1,14 +1,16 @@
 """
-FastAPI REST API for Cognitive Agent Evaluator.
+FastAPI REST API and Interactive Dashboard for Cognitive Agent Evaluator.
 """
 
 from typing import List, Dict, Any
 from fastapi import FastAPI, HTTPException, status
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.schemas import EvaluationRequest, EvaluationResult
 from src.agent import CognitiveEvaluationAgent
 from src.biases import BIAS_DEFINITIONS
+from src.ui import HTML_DASHBOARD
 
 agent = CognitiveEvaluationAgent()
 
@@ -29,8 +31,19 @@ app.add_middleware(
 )
 
 
-@app.get("/", tags=["General"])
-async def root():
+@app.get("/", response_class=HTMLResponse, tags=["Dashboard UI"])
+async def root_ui():
+    """
+    Serves the modern, intuitive interactive dashboard for testing the agent live.
+    """
+    return HTMLResponse(content=HTML_DASHBOARD)
+
+
+@app.get("/api/v1/info", tags=["General"])
+async def api_info():
+    """
+    Returns JSON metadata about the project and endpoints.
+    """
     return {
         "project": "Cognitive Agent Evaluator & Behavioral Telemetry Engine",
         "author": "Fabio Torres (neurodeveloper11)",

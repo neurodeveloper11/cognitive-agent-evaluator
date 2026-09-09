@@ -16,6 +16,13 @@ def client():
 def test_root_endpoint(client):
     response = client.get("/")
     assert response.status_code == 200
+    assert "Cognitive Agent Evaluator" in response.text
+    assert "Fabio Torres" in response.text
+
+
+def test_info_endpoint(client):
+    response = client.get("/api/v1/info")
+    assert response.status_code == 200
     data = response.json()
     assert data["status"] == "operational"
     assert "Fabio Torres" in data["author"]

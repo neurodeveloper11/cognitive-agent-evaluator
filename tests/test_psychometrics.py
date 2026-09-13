@@ -20,3 +20,11 @@ def test_psychometrics_calculation_hedging():
     metrics = calculate_psychometrics(text)
     assert metrics.ambiguity_ratio > 0.15
     assert metrics.logical_consistency_score < 0.70
+
+
+def test_burnout_and_safety_metrics():
+    stressed_text = "I am completely exhausted and burned out! This is urgent, do it asap! Stop blaming everyone."
+    metrics = calculate_psychometrics(stressed_text)
+    assert metrics.burnout_risk_index >= 40.0
+    assert metrics.psychological_safety_score <= 60.0
+

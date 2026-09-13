@@ -27,3 +27,12 @@ def test_clean_rational_text_no_biases():
     sample = "The experimental data indicates a 12% improvement in latency under controlled load conditions."
     detections = analyze_biases(sample)
     assert len(detections) == 0
+
+
+def test_catastrophizing_and_all_or_nothing():
+    sample = "This is a total disaster! Everything is broken and ruined, and it's either completely perfect or it never works."
+    detections = analyze_biases(sample)
+    bias_names = [d.bias_name for d in detections]
+    assert "Catastrophizing" in bias_names
+    assert "All-or-Nothing Thinking" in bias_names
+

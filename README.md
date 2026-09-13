@@ -1,6 +1,7 @@
 # Cognitive Agent Evaluator: Autonomous Behavioral Telemetry & Bias Mitigation Engine
 
 [![CI](https://github.com/neurodeveloper11/cognitive-agent-evaluator/actions/workflows/ci.yml/badge.svg)](https://github.com/neurodeveloper11/cognitive-agent-evaluator/actions)
+[![Hugging Face Spaces](https://img.shields.io/badge/Hugging_Face-Live_Demo_v2.0-FFD21E?style=flat-square&logo=huggingface&logoColor=black)](https://huggingface.co/spaces/neurodeveloper/cognitive-agent-evaluator)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Async_REST-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Pydantic v2](https://img.shields.io/badge/Pydantic-v2_Strict-E92063?style=flat-square&logo=pydantic&logoColor=white)](https://pydantic.dev)

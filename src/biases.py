@@ -68,6 +68,56 @@ BIAS_DEFINITIONS = {
         ],
         "explanation": "Drawing divergent conclusions from identical information depending entirely on whether it is presented as a gain or a loss (Tomar decisiones opuestas sobre la misma realidad según se presente como ganancia o como pérdida).",
         "severity": "medium"
+    },
+    "Catastrophizing": {
+        "spanish_name": "Pensamiento Catastrófico",
+        "patterns": [
+            r"\b(ruined|end of the world|everything is broken|total disaster|nothing will ever work|hopeless failure)\b",
+            r"\b(arruinado|fin del mundo|todo est[aá] roto|desastre total|nada volver[aá] a funcionar|fracaso irremediable|se acab[oó] todo)\b",
+            r"\b(we are completely doomed|irreparable damage|da[nñ]o irreparable|estamos condenados)\b"
+        ],
+        "explanation": "Magnifying negative possibilities into imminent catastrophes without empirical justification (Magnificar las probabilidades negativas proyectando catástrofes irreversibles sin justificación empírica).",
+        "severity": "high"
+    },
+    "All-or-Nothing Thinking": {
+        "spanish_name": "Pensamiento Todo o Nada / Polarizado",
+        "patterns": [
+            r"\b(either completely|all or nothing|total failure or complete perfection|never works|always fails|no middle ground)\b",
+            r"\b(o todo o nada|blanco o negro|fracaso total o perfecci[oó]n absoluta|nunca funciona|siempre falla|no hay t[eé]rmino medio)\b",
+            r"\b(if it's not perfect it's worthless|si no es perfecto no sirve para nada)\b"
+        ],
+        "explanation": "Viewing situations in black-and-white categories, rejecting nuanced or iterative progress (Interpretar situaciones en extremos absolutos, rechazando el progreso incremental o los matices).",
+        "severity": "high"
+    },
+    "Overconfidence Bias": {
+        "spanish_name": "Sesgo de Sobreconfianza / Dunning-Kruger",
+        "patterns": [
+            r"\b(100% guaranteed|impossible to fail|i know everything about|zero chance of error|we don't need tests|no need to test)\b",
+            r"\b(100% garantizado|imposible fallar|lo s[eé] todo sobre|cero posibilidad de error|no necesitamos pruebas|no hace falta probar)\b",
+            r"\b(flawless plan|foolproof|plan perfecto|a prueba de fallos)\b"
+        ],
+        "explanation": "Overestimating one's knowledge, capability, or probability of success while disregarding systemic uncertainty (Sobreestimación injustificada del propio conocimiento o probabilidad de éxito, ignorando la incertidumbre sistémica).",
+        "severity": "high"
+    },
+    "Fundamental Attribution Bias": {
+        "spanish_name": "Sesgo de Atribución / Culpabilización",
+        "patterns": [
+            r"\b(entirely their fault|they are incompetent|lazy team|bad engineer|because of his personality)\b",
+            r"\b(toda su culpa|son incompetentes|equipo mediocre|mal ingeniero|por su culpa|incompetencia de ellos)\b",
+            r"\b(they just don't care|no les importa nada|falta de compromiso)\b"
+        ],
+        "explanation": "Overattributing systemic, architectural, or organizational failures to individual malice or incompetence rather than situational constraints (Atribuir fallas sistémicas o de proceso a defectos individuales o incompetencia personal de terceros).",
+        "severity": "medium"
+    },
+    "Outcome Bias": {
+        "spanish_name": "Sesgo de Resultado / Falacia del Jugador",
+        "patterns": [
+            r"\b(it worked out so it was right|since nothing bad happened, the risk was justified|we got lucky, so the process is fine)\b",
+            r"\b(como sali[oó] bien, fue la decisi[oó]n correcta|no pas[oó] nada malo, as[ií] que el riesgo vali[oó] la pena|tuvimos suerte, as[ií] que el proceso est[aá] bien)\b",
+            r"\b(the ends justify the shortcut|el resultado justifica el atajo)\b"
+        ],
+        "explanation": "Evaluating decision quality solely based on the retrospective outcome rather than the soundness of the decision-making process at the time (Juzgar la calidad de una decisión únicamente por su resultado final fortuito y no por el rigor metodológico previo).",
+        "severity": "medium"
     }
 }
 

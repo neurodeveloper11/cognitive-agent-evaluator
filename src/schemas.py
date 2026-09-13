@@ -34,6 +34,8 @@ class PsychometricMetrics(BaseModel):
     emotional_valence: float = Field(..., ge=-1.0, le=1.0, description="Valence spectrum (-1.0 negative to +1.0 positive)")
     logical_consistency_score: float = Field(..., ge=0.0, le=1.0, description="Coherence and argument validity ratio")
     ambiguity_ratio: float = Field(..., ge=0.0, le=1.0, description="Proportion of vague or hedging phrases")
+    burnout_risk_index: float = Field(default=0.0, ge=0.0, le=100.0, description="Occupational burnout & cognitive fatigue risk score (0-100)")
+    psychological_safety_score: float = Field(default=100.0, ge=0.0, le=100.0, description="Psychological safety index in reasoning (0-100)")
 
 
 class MitigationGuidance(BaseModel):
@@ -41,6 +43,7 @@ class MitigationGuidance(BaseModel):
     alignment_risk_level: str = Field(..., description="'nominal', 'moderate', or 'critical'")
     recommended_interventions: List[str] = Field(default_factory=list)
     counterfactual_prompt: Optional[str] = Field(default=None, description="Suggested reframing prompt")
+    red_teaming_directive: Optional[str] = Field(default=None, description="Ready-to-use prompt directive for ChatGPT/Claude debiasing")
 
 
 class EvaluationResult(BaseModel):

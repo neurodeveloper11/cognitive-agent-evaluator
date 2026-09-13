@@ -44,6 +44,24 @@ LOGICAL_CONNECTIVES = {
     "sin embargo", "no obstante", "por consiguiente", "especificamente", "en contraste", "dado que"
 }
 
+BURNOUT_EXHAUSTION_TOKENS = {
+    # English
+    "exhausted", "burnout", "overwhelmed", "drowning", "unbearable", "unsustainable",
+    "collapse", "breaking point", "drained", "suffocating",
+    # Spanish
+    "agotado", "agotada", "colapso", "abrumado", "abrumada", "insostenible",
+    "limite", "límite", "quemado", "quemada", "asfixiante", "fundido"
+}
+
+COLLABORATION_SAFETY_TOKENS = {
+    # English
+    "together", "collaborate", "team", "support", "learn", "improve", "transparent",
+    "growth", "respect", "feedback", "shared", "constructive",
+    # Spanish
+    "juntos", "colaborar", "equipo", "apoyo", "aprender", "mejorar", "transparente",
+    "crecimiento", "respeto", "retroalimentacion", "retroalimentación", "compartido"
+}
+
 
 def calculate_psychometrics(text: str) -> PsychometricMetrics:
     """
@@ -85,9 +103,32 @@ def calculate_psychometrics(text: str) -> PsychometricMetrics:
         2
     )
 
+    # 5. Burnout Risk Index (0 - 100)
+    burnout_matches = sum(1 for w in words if w in BURNOUT_EXHAUSTION_TOKENS)
+    exclamation_count = text.count("!")
+    urgency_markers = len(re.findall(r"\b(asap|urgent|urgente|ya mismo|ahora|inmediato|immediately)\b", text.lower()))
+    
+    raw_burnout = (burnout_matches * 25.0) + (urgency_markers * 15.0) + (exclamation_count * 5.0)
+    if emotional_valence < -0.3:
+        raw_burnout += 20.0
+    if cognitive_load_index > 70.0:
+        raw_burnout += 15.0
+    burnout_risk_index = round(min(max(raw_burnout, 5.0), 100.0), 1)
+
+    # 6. Psychological Safety Score (0 - 100)
+    safety_matches = sum(1 for w in words if w in COLLABORATION_SAFETY_TOKENS)
+    blame_markers = len(re.findall(r"\b(culpa|culpable|culpar|incompetente|fault|blame|blaming|incompetent|lazy)\b", text.lower()))
+    
+    raw_safety = 70.0 + (safety_matches * 10.0) - (blame_markers * 25.0) + (emotional_valence * 20.0)
+    if burnout_risk_index > 50.0:
+        raw_safety -= (burnout_risk_index - 50.0) * 0.5
+    psychological_safety_score = round(min(max(raw_safety, 0.0), 100.0), 1)
+
     return PsychometricMetrics(
         cognitive_load_index=cognitive_load_index,
         emotional_valence=emotional_valence,
         logical_consistency_score=logical_consistency_score,
-        ambiguity_ratio=ambiguity_ratio
+        ambiguity_ratio=ambiguity_ratio,
+        burnout_risk_index=burnout_risk_index,
+        psychological_safety_score=psychological_safety_score
     )

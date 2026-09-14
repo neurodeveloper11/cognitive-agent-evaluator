@@ -214,5 +214,6 @@ Validates:
 **Fabio Ignacio Torres Benítez**  
 *Data Engineer | Full-Stack & AI Systems Engineer | Behavioral Telemetry Specialist*  
 - **GitHub:** [@neurodeveloper11](https://github.com/neurodeveloper11)  
+- **Hugging Face:** [@neurodeveloper](https://huggingface.co/neurodeveloper)  
 - **LinkedIn:** [Fabio Torres](https://www.linkedin.com/in/fabio-torres-39364b258)  
 - **Email:** psicologofabiotorres@gmail.com
